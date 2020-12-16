@@ -68,5 +68,5 @@ function z = solve_lc(r, p, f, n, a, lb, vlb, vb, vbv),
 
   clear r p
   if !CANCEL, z = (z + quadcc(f,  0, 2*pi)/2) / pi;
-  else, z = [] endif
+  else, z = []; endif
 end
