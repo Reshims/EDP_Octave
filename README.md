@@ -4,6 +4,9 @@ Une application du cours LEPL1103 (partie EDP) de l'[EPL] ([UCLouvain]) pour la 
 
 ## Contenu
 
+- [Fonctionnalités](#features)
+
+<a name="features"><a/>
 ## Fonctionnalités
 
 À l'aide d'une interface graphique, ce programme permet la résolution de 2 équations aux dérivées partielles:
