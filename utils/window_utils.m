@@ -212,7 +212,7 @@ function laplace_circle(cbs='', evt=''),
   set(ERR_HANDLE, 'position', [3/32 7/18 5/16 1/18])
 
   %sliders
-  [tx1, sd1] = create_slider(DLG, [1/16 8/9], 'n = ', 'Nombre de fonctions propres', [30, 100], 70, :, true);
+  [tx1, sd1] = create_slider(DLG, [1/16 8/9], 'n = ', 'Nombre de fonctions propres', [30, 100], 30, :, true);
   [tx2, sd2] = create_slider(DLG, [1/16 7/9], 'R = ', 'Taille du domaine en r', [1, 3], 1);
 
   %checkbox for plotting u(R, t)
