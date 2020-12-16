@@ -27,7 +27,7 @@ Dans les deux cas, on n'autorise qu'une seule condition non-homogène de Dirichl
 
 ### Équation d'onde
 Résoud l'équation d'onde ![eq](https://i.imgur.com/RDzBxxG.png) pour un domaine rectangulaire.  
-On autorise ici que deux conditions limite: une condition de Direchlet et une de Neumann en t = 0.  
+On autorise ici que deux conditions limite: une condition de Dirichlet et une de Neumann en t = 0.  
 Comme l'équation est à 3 dimensions (2 spatiales et 1 temporelle), on peut choisir de montrer la solution à un temps donné ou de l'animer pour un intervalle donné.
 
 |![exemple WS](https://i.imgur.com/nJYkIan.gif)|![exemple WA](https://i.imgur.com/7v92RKb.gif)|
