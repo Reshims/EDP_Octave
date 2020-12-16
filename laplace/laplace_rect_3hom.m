@@ -1,4 +1,6 @@
-function laplace_rect_3hom(L, H, n, f, lb='', vb='', gd=false),
+42;
+
+function lr_main(L, H, n, f, lb='', vb='', gd=false),
   global CANCEL
   CANCEL = false;
 

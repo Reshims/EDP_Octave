@@ -209,6 +209,7 @@ end
 function update_loadbar(h, cp),
   bh = get(get(h, "children")(1), "children")(1);
 
+  set(h, 'visible', 'on')
   set(bh, 'position', [0 0 cp 1])
 end
 

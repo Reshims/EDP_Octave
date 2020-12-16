@@ -1,3 +1,5 @@
+42;
+
 %creates a n * m matrix of the coefs of the projections of f and g
 %over a domain [0, L] * [0, H] (x, y) with base functions:
 %x -> sin(n*pi*x/L)
@@ -14,7 +16,7 @@
 %                                             1 means 2 1D functions (X(x), Y(y))
 %                                             0 means a null function (f = 0 for all inputs)
 
-function [A_matrix, B_matrix] = save_matrix(L, H, n_max, m_max, f, fy='', g, gy='', f_type=2, g_type=2, lb, vlb, vb, vbv),
+function [A_matrix, B_matrix] = or_coefs(L, H, n_max, m_max, f, fy='', g, gy='', f_type=2, g_type=2, lb, vlb, vb, vbv),
   global CANCEL
 
   %verbose stuff

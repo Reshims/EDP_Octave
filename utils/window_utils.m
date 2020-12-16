@@ -183,7 +183,7 @@ function laplace_rect(cbs='', evt=''),
   svb = create_verbose(DLG, slb, [3/32 6/18 5/16 1/18], 20);
 
   set(gcb, 'value', 0)
-  set(spb, 'callback', @() laplace_rect_3hom(sd2, sd3, sd1, fed, slb, svb, gcb))
+  set(spb, 'callback', @() lr_main(sd2, sd3, sd1, fed, slb, svb, gcb))
 
   %clear tx1 tx2 tx3
   %clear sd1 sd2 sd3
@@ -239,7 +239,7 @@ function laplace_circle(cbs='', evt=''),
   svb = create_verbose(DLG, slb, [3/32 6/18 5/16 1/18], 20);
 
   set(gcb, 'value', 0)
-  set(spb, 'callback', @() laplace_circ(sd2, sd1, fed, slb, svb, gcb));
+  set(spb, 'callback', @() lc_main(sd2, sd1, fed, slb, svb, gcb));
 
   clear tx* sd* *tx gcb fed cpb* spb slb svb
   refresh(DLG)
@@ -308,10 +308,10 @@ function wave(cbs='', evt=''),
   set(cb4, 'callback', @() toggle_visibilties(gtx1, gtx2, gtx3))
   set(fpb, 'callback', {@plot_wave, cb1, cb2, fed1, fed2, fed3, sd3, sd4})
   set(gpb, 'callback', {@plot_wave, cb3, cb4, ged1, ged2, ged3, sd3, sd4})
-  set(spb, 'callback', @() onde_rect(sd3, sd4, sd1, sd2, sd5, ...     %plot data
-                                     cb1, cb2, fed1, fed2, fed3, ...  %f(x, y)
-                                     cb3, cb4, ged1, ged2, ged3, ...  %g(x, y)
-                                     slb, svb))                       %verbose
+  set(spb, 'callback', @() or_main(sd3, sd4, sd1, sd2, sd5, ...     %plot data
+                                   cb1, cb2, fed1, fed2, fed3, ...  %f(x, y)
+                                   cb3, cb4, ged1, ged2, ged3, ...  %g(x, y)
+                                   slb, svb))                       %verbose
 
   clear tx* ftx* gtx* sd* fed* ged* *pb slb svb
   refresh(DLG)

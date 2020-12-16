@@ -1,4 +1,6 @@
-function laplace_circ(a, n, f, lb='', vb='', gd=false),
+42;
+
+function lc_main(a, n, f, lb='', vb='', gd=false),
   global CANCEL
   CANCEL = false;
 

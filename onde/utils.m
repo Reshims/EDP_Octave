@@ -64,6 +64,11 @@ function matrix = or_get_at_time(shape, m_max, n_max, L, H, matrix_A, matrix_B, 
   matrix = reshape(matrix_A' * cos(K*t) + matrix_B' * sin(K*t), shape);
 endfunction
 
+function or_closing(f),
+  global CLOSING
+  CLOSING = f;
+end
+
 function or_anim(x, y, n, m, L, H, matrix_A, matrix_B, sd2, sd3, sd4, sd5),
 	sdata = round_100(get(sd2, 'value'));
 	edata = round_100(get(sd3, 'value'));
@@ -78,7 +83,7 @@ function or_anim(x, y, n, m, L, H, matrix_A, matrix_B, sd2, sd3, sd4, sd5),
 	CLOSING = 0;
 
 	f = figure();
-	set(f, 'deletefcn', @(){CLOSING = f;})
+	set(f, 'deletefcn', @() or_closing(f))
 
 	sol = or_get_at_time(size(x), m, n, L, H, matrix_A, matrix_B, sdata);
 	sf = surf(x, y, sol);
@@ -124,6 +129,13 @@ function or_unique(x, y, m, n, L, H, matrix_A, matrix_B, sd1),
 	clear sol matrix_* x y sd1
 end
 
+function or_control(sd4, sd5, tx4),
+  bdata = round(get(sd4, 'value'));
+  edata = round(get(sd5, 'value'));
+
+  set(tx4, 'string', sprintf('dt = %de-%d', bdata, edata))
+end
+
 function [h, plt] = or_create_handler(x, y, n, m, L, H, matrix_A, matrix_B, s),
 	screen_size = get(0, 'screensize');
   screen_center = screen_size(3:4)/2;
@@ -145,13 +157,6 @@ function [h, plt] = or_create_handler(x, y, n, m, L, H, matrix_A, matrix_B, s),
 	sd5 = uicontrol(h, 'style', 'slider', 'units', 'normalized', 'position', [1/3 11/26-3/325 3/5 1/18], ...
           'min', 0, 'max', 5, 'value', 2, 'tooltipstring', 'Controle l''exposant de dt');
 
-	control = @() {
-		bdata = round(get(sd4, 'value'));
-		edata = round(get(sd5, 'value'));
-
-		set(tx4, 'string', sprintf('dt = %de-%d', bdata, edata))
-	};
-
 	pb1 = uicontrol(h, 'style', 'pushbutton', 'string', 'Afficher', 'fontsize', 16, 'units', 'normalized', ...
           'position', [1/15 1/9 11/30 1/9], 'tooltipstring', 'Affiche la solution a un temps unique');
 	pb2 = uicontrol(h, 'style', 'pushbutton', 'string', 'Animer', 'fontsize', 16, 'units', 'normalized', ...
@@ -161,8 +166,8 @@ function [h, plt] = or_create_handler(x, y, n, m, L, H, matrix_A, matrix_B, s),
 	set(sd2, 'position', [1/3 20/26-3/325 3/5 1/18])
 	set(sd3, 'position', [1/3 17/26-3/325 3/5 1/18])
 
-	set(sd4, 'callback', control)
-	set(sd5, 'callback', control)
+	set(sd4, 'callback', @() or_control(sd4, sd5, tx4))
+	set(sd5, 'callback', @() or_control(sd4, sd5, tx4))
 	addlistener(sd2, 'value', @() update_slider(sd2, sd3, tx3, 'end = '))
 
 	set(pb1, 'callback', @() or_unique(x, y, m, n, L, H, matrix_A, matrix_B, sd1))

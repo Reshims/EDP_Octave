@@ -1,7 +1,7 @@
 source("onde/save_matrix.m")
 source("onde/utils.m")
 
-function onde_rect(L, H, n, m, res, ...      %plot data
+function or_main(L, H, n, m, res, ...      %plot data
                    fnl, fsp, f, fx, fy, ...  %f(x, y)
                    gnl, gsp, g, gx, gy, ...  %g(x, y)
                    lb, vb),                  %verbose
@@ -38,7 +38,7 @@ function onde_rect(L, H, n, m, res, ...      %plot data
   vbv = ishandle(vb);
   if vlb, eta = get(lb, 'visible'); set(lb, 'visible', 'on') endif
 
-  [matrix_A, matrix_B] = save_matrix(L, H, n, m, f, fy, g, gy, ftype, gtype, lb, vlb, vb, vbv);
+  [matrix_A, matrix_B] = or_coefs(L, H, n, m, f, fy, g, gy, ftype, gtype, lb, vlb, vb, vbv);
 
   if vlb, set(lb, 'visible', eta) endif
   if CANCEL,
