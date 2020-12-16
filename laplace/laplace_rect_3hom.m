@@ -29,7 +29,7 @@ function lr_main(L, H, n, f, lb='', vb='', gd=false),
     hold on
     surf(xx, yy, z)
 
-    if gd, plot3(x, H*ones(size(y)), f(x), 'linewidth', 2, 'color', 'black') endif
+    if gd, plot3(x, H*ones(size(x)), f(x), 'linewidth', 2, 'color', 'black') endif
     hold off
     view([-30 10])
 
@@ -52,7 +52,7 @@ function z = solve_lr(x, y, f, n, H, L, lb, vlb, vb, vbv),
     if vlb, update_loadbar(lb, m/n) endif
     if vbv, set(vb, 'string', sprintf('Calcul des coefficients de projection (%d/%d)', m, n)) endif
     k = m*pi/L;
-    z += 2 * quad(@(x) f(x).*sin(k*x), 0, L) .* sin(k*x).*sinh(k*y) / (L*sinh(k*H));
+    z += 2 * quadcc(@(x) f(x).*sin(k*x), 0, L) .* sin(k*x).*sinh(k*y) / (L*sinh(k*H));
 
     pause(1e-10)
     if CANCEL, z = []; break endif
