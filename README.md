@@ -50,7 +50,7 @@ Si vous ne possèdez pas octave (version 6.1), veuillez consulter la section [in
 Dans le cas ou vous ne possèdez pas encore ce language nécessaire au fonctionnement de ce programme,
 vous pouvez l'installer en le téléchargeant depuis [son site](https://www.gnu.org/software/octave/index).
 
-:exclamation: Octave nécessite ~1.7Go d'espace
+:warning: Octave nécessite ~1.7Go d'espace
 
 ### Téléchargement
 
