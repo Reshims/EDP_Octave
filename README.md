@@ -6,6 +6,7 @@ Une application du cours LEPL1103 (partie EDP) de l'[EPL] ([UCLouvain]) pour la 
 
 - [Fonctionnalités](#fonctionnalités)
 - [Installation](#installation)
+- [Installer octave](#installer-octave)
 
 ## Fonctionnalités
 
@@ -37,7 +38,7 @@ Comme l'équation est à 3 dimensions (2 spatiales et 1 temporelle), on peut cho
 
 ## Installation
 
-Si vous ne possèdez pas octave (version 6.1), veuillez consulter la section [installer octave](#)
+Si vous ne possèdez pas octave (version 6.1), veuillez consulter la section [installer octave](#installer-octave)
 
 ### 1. Télécharger le dossier principal
 ### 2. Décompresser le fichier
