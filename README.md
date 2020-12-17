@@ -5,6 +5,7 @@ Une application du cours LEPL1103 (partie EDP) de l'[EPL] ([UCLouvain]) pour la 
 ## Contenu
 
 - [Fonctionnalités](#fonctionnalités)
+- [Installation](#installation)
 
 ## Fonctionnalités
 
@@ -33,6 +34,17 @@ Comme l'équation est à 3 dimensions (2 spatiales et 1 temporelle), on peut cho
 |![exemple WS](https://i.imgur.com/nJYkIan.gif)|![exemple WA](https://i.imgur.com/7v92RKb.gif)|
 |:---:|:---:|
 |Exemple de solution pour un temps unique|Exemple de solution animée sur un intervalle de temps|
+
+## Installation
+
+Si vous ne possèdez pas octave (version 6.1), veuillez consulter la section [installer octave](#)
+
+### 1. Télécharger le dossier principal
+### 2. Décompresser le fichier
+### 3. Changer le chemin dans octave
+### 4. Lancer 'main.m'
+
+## Installer octave
 
 [EPL]: https://uclouvain.be/fr/facultes/epl
 [UCLouvain]: https://uclouvain.be/fr/index.html
