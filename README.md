@@ -47,5 +47,21 @@ Si vous ne possèdez pas octave (version 6.1), veuillez consulter la section [in
 
 ## Installer octave
 
+Dans le cas ou vous ne possèdez pas encore ce language nécessaire au fonctionnement de ce programme,
+vous pouvez l'installer en le téléchargeant depuis [son site](https://www.gnu.org/software/octave/index).
+
+:exclamation: Octave nécessite ~1.7Go d'espace
+
+### Téléchargement
+
+Vous pouvez télécharger la dernière version d'octave [ici](https://www.gnu.org/software/octave/download.html)
+ou chercher une version précise [ici](https://ftp.gnu.org/gnu/octave/).
+
+<details>
+  <summary>Ce à quoi ressemble les liens (windows)</summary>
+  
+  > ![img](https://i.imgur.com/HLF2sMp.png)
+</details>
+
 [EPL]: https://uclouvain.be/fr/facultes/epl
 [UCLouvain]: https://uclouvain.be/fr/index.html
