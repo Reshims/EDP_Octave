@@ -1,15 +1,12 @@
 # EDP_Octave
-
 Une application du cours LEPL1103 (partie EDP) de l'[EPL] ([UCLouvain]) pour la visualisation de solutions d'équations aux dérivées partielles.
 
 ## Contenu
-
 - [Fonctionnalités](#fonctionnalités)
 - [Installation](#installation)
 - [Installer octave](#installer-octave)
 
 ## Fonctionnalités
-
 À l'aide d'une interface graphique, ce programme permet la résolution de 2 équations aux dérivées partielles:
 
 - Équation de Laplace
@@ -37,12 +34,11 @@ Comme l'équation est à 3 dimensions (2 spatiales et 1 temporelle), on peut cho
 |Exemple de solution pour un temps unique|Exemple de solution animée sur un intervalle de temps|
 
 ## Installation
-
 Si vous ne possèdez pas octave (version 6.1), veuillez consulter la section [installer octave](#installer-octave)
 
 ### 1. Télécharger le dossier principal
-
 Il suffit juste de cliquer sur le boutton **Code** du répertoire principal [EDP_Octave](https://github.com/Reshims/EDP_Octave).
+
 <details>
   <summary>Image d'aide</summary>
     
@@ -50,18 +46,31 @@ Il suffit juste de cliquer sur le boutton **Code** du répertoire principal [EDP
 </details>
 
 ### 2. Décompresser le fichier
+Vous devriez obtenir un dossier contenant tous les fichiers/dossiers du répertoire principal.  
+**Si ce n'est pas le cas**, essayez de télécharger une nouvelle fois le dossier.
+
 ### 3. Changer le chemin dans octave
+Le programme nécessitant des dépendances, octave doit **impérativement** lancer le programme depuis son dossier source.
+Pour ce faire, il suffit de vous déplacer jusqu'au dossier comprenant **main.m** ainsi que ses dépendances via le navigateur
+integré d'octave.
+
+<details>
+  <summary>Image d'aide</summary>
+    
+  > ![img](https://i.imgur.com/q47aWoo.gif)
+</details>
+
 ### 4. Lancer 'main.m'
+Une fois le bon dossier ouvert, double-cliquez sur **main.m** pour l'ouvrir dans l'editeur d'octave.  
+Pour lancer le programme, appuyez sur **F5** ou sur le boutton **Enregistrer le Script et l'Exécuter / Continuer** ![img](https://i.imgur.com/HsPopqJ.png)
 
 ## Installer octave
-
 Dans le cas ou vous ne possèdez pas encore ce language nécessaire au fonctionnement de ce programme,
 vous pouvez l'installer en le téléchargeant depuis [son site](https://www.gnu.org/software/octave/index).
 
 :exclamation: Octave nécessite ~1.7Go d'espace
 
 ### Téléchargement
-
 Vous pouvez télécharger la dernière version d'octave [ici](https://www.gnu.org/software/octave/download.html)
 ou chercher une version précise [ici](https://ftp.gnu.org/gnu/octave/).
 
