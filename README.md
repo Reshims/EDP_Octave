@@ -64,6 +64,12 @@ integré d'octave.
 Une fois le bon dossier ouvert, double-cliquez sur **main.m** pour l'ouvrir dans l'editeur d'octave.  
 Pour lancer le programme, appuyez sur **F5** ou sur le boutton **Enregistrer le Script et l'Exécuter / Continuer** ![img](https://i.imgur.com/HsPopqJ.png)
 
+<details>
+  <summary>Après quelques instants, une nouvelle fenêtre devrait se lancer: le programme à démarré !</summary>
+    
+  > ![img](https://i.imgur.com/kfuSF7P.png)
+</details>
+
 ## Installer octave
 Dans le cas ou vous ne possèdez pas encore ce language nécessaire au fonctionnement de ce programme,
 vous pouvez l'installer en le téléchargeant depuis [son site](https://www.gnu.org/software/octave/index).
