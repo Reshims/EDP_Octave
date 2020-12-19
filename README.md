@@ -80,5 +80,19 @@ ou chercher une version précise [ici](https://ftp.gnu.org/gnu/octave/).
   > ![img](https://i.imgur.com/HLF2sMp.png)
 </details>
 
+### Installation
+> Ces deux prochaines sections ne traiteront que de la version Windows car je n'ai pas eu la chance de pouvoir tenter une installation sous macOS.
+
+**Si vous avez choisis l'"installer" (.exe)**, il vous suffit de lancer le fichier téléchargé et l'utilitaire d'installation s'occupera de tout.  
+Il est conseillé de créer des raccourcis bureau quand ils vous seront proposés.
+
+**Si vous avez choisis l'archive (.7z/.zip)**, il vous suffit d'extraire les fichier de l'archive et octave sera prêt à l'emploi.
+
+### Lancement
+**Si vous avez les raccourcis bureau**, il vous suffit de lancer la version **GUI** d'Octave.
+
+L'executable pour lancer Octave se trouve dans le dossier principal et se nomme **octave.vbs**  
+Il se lance comme n'importe quel programme en **.exe**
+
 [EPL]: https://uclouvain.be/fr/facultes/epl
 [UCLouvain]: https://uclouvain.be/fr/index.html
