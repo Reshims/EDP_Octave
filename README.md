@@ -42,11 +42,11 @@ Si vous ne possèdez pas octave (version 6.1), veuillez consulter la section [in
 
 ### 1. Télécharger le dossier principal
 
-Il suffit juste de cliquer sur le boutton **code** du répertoire principal [EDP_Octave](https://github.com/Reshims/EDP_Octave).
+Il suffit juste de cliquer sur le boutton **Code** du répertoire principal [EDP_Octave](https://github.com/Reshims/EDP_Octave).
 <details>
-    <summary>Image d'aide</summary>
+  <summary>Image d'aide</summary>
     
-    > ![img](https://i.imgur.com/ulzWdjj.gif)
+  > ![img](https://i.imgur.com/ulzWdjj.gif)
 </details>
 
 ### 2. Décompresser le fichier
