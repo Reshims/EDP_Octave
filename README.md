@@ -65,7 +65,7 @@ Une fois le bon dossier ouvert, double-cliquez sur **main.m** pour l'ouvrir dans
 Pour lancer le programme, appuyez sur **F5** ou sur le boutton **Enregistrer le Script et l'Exécuter / Continuer** ![img](https://i.imgur.com/HsPopqJ.png)
 
 <details>
-  <summary>Après quelques instants, une nouvelle fenêtre devrait se lancer: le programme à démarré !</summary>
+  <summary>Après quelques instants, une nouvelle fenêtre devrait se lancer: le programme a démarré !</summary>
     
   > ![img](https://i.imgur.com/kfuSF7P.png)
 </details>
@@ -87,7 +87,7 @@ ou chercher une version précise [ici](https://ftp.gnu.org/gnu/octave/).
 </details>
 
 ### Installation
-> Ces deux prochaines sections ne traiteront que de la version Windows car je n'ai pas eu la chance de pouvoir tenter une installation sous macOS.
+> Ces prochaines sections ne traiteront que de la version Windows car je n'ai pas eu la chance de pouvoir tenter une installation sous macOS.
 
 **Si vous avez choisis l'"installer" (.exe)**, il vous suffit de lancer le fichier téléchargé et l'utilitaire d'installation s'occupera de tout.  
 Il est conseillé de créer des raccourcis bureau quand ils vous seront proposés.
