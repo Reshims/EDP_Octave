@@ -94,5 +94,16 @@ Il est conseillé de créer des raccourcis bureau quand ils vous seront proposé
 L'executable pour lancer Octave se trouve dans le dossier principal et se nomme **octave.vbs**  
 Il se lance comme n'importe quel programme en **.exe**
 
+### Avancé
+Pour lancer octave depuis le terminal via la commande `octave`, il vous suffit d'ajouter le chemin "../octave/mingw64/bin" au **PATH**.
+"../octave" correspond au dossier contentant **octave.vbs**
+
+Vous pourrez alors lancer un fichier via la commande `octave path_to_file/file.m`.  
+Un argument peut y être rajouté pour changer l'execution d'octave:
+  * `--no-gui`: lancer octave en mode terminal.
+  * `--gui`: lancer octave avec l'interface graphique.
+  
+Si aucun fichier n'est précisé, octave se lancera dans le mode précisé.
+
 [EPL]: https://uclouvain.be/fr/facultes/epl
 [UCLouvain]: https://uclouvain.be/fr/index.html
