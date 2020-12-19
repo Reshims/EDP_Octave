@@ -58,7 +58,7 @@ Vous pouvez télécharger la dernière version d'octave [ici](https://www.gnu.or
 ou chercher une version précise [ici](https://ftp.gnu.org/gnu/octave/).
 
 <details>
-  <summary>Ce à quoi ressemble les liens (windows)</summary>
+  <summary>Image d'aide</summary>
   
   > ![img](https://i.imgur.com/HLF2sMp.png)
 </details>
