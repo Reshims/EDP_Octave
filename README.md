@@ -5,6 +5,7 @@ Une application du cours LEPL1103 (partie EDP) de l'[EPL] ([UCLouvain]) pour la 
 - [Fonctionnalités](#fonctionnalités)
 - [Installation](#installation)
 - [Installer octave](#installer-octave)
+- [Limitations et bugs connus](#)
 
 ## Fonctionnalités
 À l'aide d'une interface graphique, ce programme permet la résolution de 2 équations aux dérivées partielles:
@@ -110,6 +111,27 @@ Un argument peut y être rajouté pour changer l'execution d'octave:
   * `--gui`: lancer octave avec l'interface graphique.
   
 Si aucun fichier n'est précisé, octave se lancera dans le mode précisé.
+
+Lancer en utilisant la commande `octave` peut résulter en des bugs graphiques,
+préfèrez lancer le fichier **octave-gui.exe** présent dans le chemin "../octave/mingw64/bin".
+
+## Limitations et bugs connus
+### Interface graphique
+> Le chargement des éléments UI est relativement lent.
+
+C'est une limitation due à la fois à octave et aussi à mon manque d'expérience.  
+Mettre sa souris sur la fenêtre permet d'accélèrer l'affichage.
+
+> Certains éléments son modifiables et n'ont pas toujours la bonne forme.
+
+C'est une limitation d'octave et n'ayant pas une grande importance quand à la stabilité du programme,  
+il est conseillé d'éviter de modifier ce qui n'est pas prévu à cet effet.
+
+### Simulation
+> Il n'y a pas beaucoup de simulations différentes.
+
+Cette version du programme est orienté dans l'application directe des formules vues au cours LEPL1103.
+Les algorithmes de résolution sont donc des implémentations presque naïves des résultats optenus en cours magistraux.
 
 [EPL]: https://uclouvain.be/fr/facultes/epl
 [UCLouvain]: https://uclouvain.be/fr/index.html
