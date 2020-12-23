@@ -5,7 +5,7 @@ Une application du cours LEPL1103 (partie EDP) de l'[EPL] ([UCLouvain]) pour la 
 - [Fonctionnalités](#fonctionnalités)
 - [Installation](#installation)
 - [Installer octave](#installer-octave)
-- [Limitations et bugs connus](#)
+- [Limitations et bugs connus](#limitations-et-bugs-connus)
 
 ## Fonctionnalités
 À l'aide d'une interface graphique, ce programme permet la résolution de 2 équations aux dérivées partielles:
@@ -132,6 +132,20 @@ il est conseillé d'éviter de modifier ce qui n'est pas prévu à cet effet.
 
 Cette version du programme est orienté dans l'application directe des formules vues au cours LEPL1103.
 Les algorithmes de résolution sont donc des implémentations presque naïves des résultats optenus en cours magistraux.
+
+> Les simulations sont longues à charger.
+
+Comme dit au point précédant, les algorithmes ne sont pas assez optimisés.
+Ils le seront peut-être plus dans une version ultérieure.
+
+> L'utilisation de la RAM est anormale.
+
+Les matrices de solution sont malheureusement assez grandes. La mémoire utilisée est donc relativement grande.  
+De plus, à cause d'un bug lié à l'utilisation d'interface graphique, certaines variables (notamment celles de solution...)
+deviennent persistentes et donc, impossibles à supprimer de la RAM sans redémarrage complet d'octave.
+
+Si vous utilisez le programme via l'interface graphique d'octave, veuillez redémarrer l'interface entre les utilisations et
+évitez de lancer trop de simulations sur une seule utilisation.
 
 [EPL]: https://uclouvain.be/fr/facultes/epl
 [UCLouvain]: https://uclouvain.be/fr/index.html
