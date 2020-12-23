@@ -130,7 +130,7 @@ il est conseillé d'éviter de modifier ce qui n'est pas prévu à cet effet.
 ### Simulation
 > Il n'y a pas beaucoup de simulations différentes.
 
-Cette version du programme est orienté dans l'application directe des formules vues au cours LEPL1103.
+Cette version du programme est orientée dans l'application directe des formules vues au cours LEPL1103.
 Les algorithmes de résolution sont donc des implémentations presque naïves des résultats optenus en cours magistraux.
 
 > Les simulations sont longues à charger.
