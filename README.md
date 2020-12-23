@@ -7,6 +7,8 @@ Une application du cours LEPL1103 (partie EDP) de l'[EPL] ([UCLouvain]) pour la 
 - [Installer octave](#installer-octave)
 - [Limitations et bugs connus](#limitations-et-bugs-connus)
 
+<br>
+
 ## Fonctionnalités
 À l'aide d'une interface graphique, ce programme permet la résolution de 2 équations aux dérivées partielles:
 
@@ -33,6 +35,8 @@ Comme l'équation est à 3 dimensions (2 spatiales et 1 temporelle), on peut cho
 |![exemple WS](https://i.imgur.com/nJYkIan.gif)|![exemple WA](https://i.imgur.com/7v92RKb.gif)|
 |:---:|:---:|
 |Exemple de solution pour un temps unique|Exemple de solution animée sur un intervalle de temps|
+
+<br>
 
 ## Installation
 Si vous ne possèdez pas octave (version 6.1), veuillez consulter la section [installer octave](#installer-octave)
@@ -70,6 +74,8 @@ Pour lancer le programme, appuyez sur **F5** ou sur le boutton **Enregistrer le 
     
   > ![img](https://i.imgur.com/kfuSF7P.png)
 </details>
+
+<br>
 
 ## Installer octave
 Dans le cas ou vous ne possèdez pas encore ce language nécessaire au fonctionnement de ce programme,
@@ -114,6 +120,8 @@ Si aucun fichier n'est précisé, octave se lancera dans le mode précisé.
 
 Lancer en utilisant la commande `octave` peut résulter en des bugs graphiques,
 préfèrez lancer le fichier **octave-gui.exe** présent dans le chemin "../octave/mingw64/bin".
+
+<br>
 
 ## Limitations et bugs connus
 ### Interface graphique
