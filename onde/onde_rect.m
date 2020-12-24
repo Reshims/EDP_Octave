@@ -1,5 +1,7 @@
-source("onde/save_matrix.m")
-source("onde/utils.m")
+global FLP
+
+source([FLP 'onde/save_matrix.m'])
+source([FLP 'onde/utils.m'])
 
 function or_main(L, H, n, m, res, ...      %plot data
                    fnl, fsp, f, fx, fy, ...  %f(x, y)
@@ -9,19 +11,19 @@ function or_main(L, H, n, m, res, ...      %plot data
   global CANCEL
   CANCEL = false;
 
-  %check params
+  %check/process of parametres
   if ishandle(n), n = round(get(n, 'value')); endif
   if ishandle(m), m = round(get(m, 'value')); endif
-  if n*m > 7000,
+  if n*m > 7000, %can cause huge lagspike
     errordlg({'Le nombre de fonction propres (m*n)', 'ne peut depasser 7000'}, 'Erreur')
     CANCEL = true;
     return
   endif
 
-
   if ishandle(L), L = round(get(L, 'value')*100)/100; endif
   if ishandle(H), H = round(get(H, 'value')*100)/100; endif
   if ishandle(res), res = round(get(res, 'value')); endif
+
 
   %check functions
   if !is_function_handle(f),
@@ -38,6 +40,7 @@ function or_main(L, H, n, m, res, ...      %plot data
   vbv = ishandle(vb);
   if vlb, eta = get(lb, 'visible'); set(lb, 'visible', 'on') endif
 
+  %calculate projection coefs
   [matrix_A, matrix_B] = or_coefs(L, H, n, m, f, fy, g, gy, ftype, gtype, lb, vlb, vb, vbv);
 
   if vlb, set(lb, 'visible', eta) endif
@@ -49,8 +52,9 @@ function or_main(L, H, n, m, res, ...      %plot data
   x = linspace(0, H, res*H);
   y = linspace(0, L, res*L);
   [xx, yy] = meshgrid(x, y);
-
   if vlb, eta = get(lb, 'visible'); set(lb, 'visible', 'on') endif
+
+  %calculate spatial part of the solution (u(r, t) ~ R(r)*T(t))
   [spatial_A, spatial_B] = or_get_at_space(xx(:), yy(:), L, H, matrix_A, matrix_B, lb, vlb, vb, vbv);
 
   clear matrix_A matrix_B x y
@@ -64,6 +68,7 @@ function or_main(L, H, n, m, res, ...      %plot data
   sf = ['f(x, y) =' repres_func(f, fy, ftype)(8:end)];
   sg = ['g(x, y) =' repres_func(g, gy, gtype)(8:end)];
 
+  %create controler (GUI)
   or_create_handler(xx, yy, n, m, L, H, spatial_A, spatial_B, [sf, ', ', sg]);
 
   clear xx yy spatial_*

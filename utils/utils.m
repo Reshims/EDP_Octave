@@ -2,31 +2,6 @@
 
 #=====================[  Utility functions  ]======================
 
-%modified version of Octave's menu, terminal mode only
-%
-%pstr: string   - header of the list of options (optionnal)
-%args: cell_str - options to choose from
-function [sel, ok] = promptTerminal(pstr = "", args),
-  #Code copied from 'menu.m' in Octave's files
-  fflush (stdout);
-  page_screen_output (false, "local");
-
-  disp(pstr)
-  nopt = numel(args);
-  for i = 1:nopt,
-    printf("  [%2d] %s\n", i, args{i});
-  endfor;
-  printf("\n");
-
-  s = input(sprintf("Select a number (1-%d): ", nopt), "");
-  sel = sscanf (s, "%d");
-  ok = 1;
-
-  if (! isscalar (sel) || sel < 1 || sel > nopt),
-    ok = 0;
-  endif
-endfunction
-
 %return min/max of the largest 0 centered interval between cmin and cmax
 %usefull for cmap
 function lims = min_max(cmin, cmax),
@@ -62,6 +37,9 @@ function [x, y, z] = load_matrix(p),
   z = matrix(:, :, 3);
 end
 
+%checks if a given function (string) is correct
+%if so, translate it to an anonymous function
+%if not, set ok to false
 function [f, ok] = translate(s, v='x', narg=1),
   f = ''; ok = false;
 
@@ -89,7 +67,7 @@ function [f, ok] = translate(s, v='x', narg=1),
     disp_err(['La fonction doit dependre de x, y et pas ' names{1} ', ' names{2}])
     return
   endif
-  
+
   source("utils/math_funs.m")
 
   try,
@@ -112,8 +90,11 @@ function [f, ok] = translate(s, v='x', narg=1),
   ok = true;
 end
 
+%changes all operations to element-wise ones
+%(didn't find how to correcly do it so let's hope noone checks this section of the code)
+%(but yeah, Thyrion is an exponant here... hehe)
 function s = parse(s),
-  s = strrep(s, '**', 'POGGERS');
+  s = strrep(s, '**', 'THYRION');
 
   %s = strrep(s, '+', '.+');
   %s = strrep(s, '-', '.-');
@@ -121,7 +102,7 @@ function s = parse(s),
   s = strrep(s, '/', './');
   s = strrep(s, '^', '.^');
 
-  s = strrep(s, 'POGGERS', '.**');
+  s = strrep(s, 'THYRION', '.**');
   s = strrep(s, '..', '.');
 end
 
@@ -168,6 +149,7 @@ function disp_err(msg),
   CANCEL = true;
 end
 
+%fillable -> text and the inverse
 function toggle_edit(varargin),
   for i = 1:numel(varargin),
     h = varargin{i};

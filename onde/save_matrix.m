@@ -42,7 +42,7 @@ function [A_matrix, B_matrix] = or_coefs(L, H, n_max, m_max, f, fy='', g, gy='',
         %current base function
         phi_nm = or_phi(n, m, L, H);
 
-        %calculate projection coef for g and f
+        %calculate projection coef for g and/or f
         if f_type == 2,
           A_matrix(n, m) = or_coef(f, phi_nm, L, H);
         elseif g_type == 2,
@@ -59,12 +59,15 @@ function [A_matrix, B_matrix] = or_coefs(L, H, n_max, m_max, f, fy='', g, gy='',
   %we can then generate the coef matrix by doing the outer product of the 2 vectors
   %this method change the operations from n*m 2D integrals
   %                                  to   n+m 1D integrals + 1 n*m outer product
+  %
+  %quadcc here because other can raise errors and slow process by a lot
   elseif (f_type == 1) || (g_type == 1),
     A_n = zeros([n_max, 1]);
     A_m = zeros([m_max, 1]);
     B_n = A_n;
     B_m = A_m;
 
+    %projection onto x-dependent base functions
     for n = 1:n_max,
       if vlb, update_loadbar(lb, n/n_max) endif
       if vbv, set(vb, 'string', sprintf('Calcul des coefficients de projection en x (%d/%d)', n, n_max)) endif
@@ -80,6 +83,7 @@ function [A_matrix, B_matrix] = or_coefs(L, H, n_max, m_max, f, fy='', g, gy='',
       if CANCEL, return endif
     endfor
 
+    %projection onto y-dependent base functions
     for m = 1:m_max,
       if vlb, update_loadbar(lb, m/m_max) endif
       if vbv, set(vb, 'string', sprintf('Calcul des coefficients de projection en y (%d/%d)', m, m_max)) endif
@@ -95,17 +99,15 @@ function [A_matrix, B_matrix] = or_coefs(L, H, n_max, m_max, f, fy='', g, gy='',
       if CANCEL, return endif
     endfor
 
+    %opening matrix of base function
     if f_type == 1,
       A_matrix = A_n * A_m';
-
-    elseif g_type == 1,
+    endif
+    if g_type == 1,
       B_matrix = B_n * B_m';
 
       [m, n] = meshgrid(1:m_max, 1:n_max);
       B_matrix ./= (@(m, n) sqrt((n/L)**2 + (m/H)**2))(m, n);
-
-      pause(1e-10)
-      if CANCEL, return endif
     endif
   endif
 

@@ -3,9 +3,9 @@
 %implements the 2 projection matrices onto the base functions for the space dimensions
 %it uses n*m = numel(matrix_A) = numel(matrix_B) functions (n for the x axis, m for the y axis)
 %
-%x, y:               vector  - the 2 component of a mesgrid flattened (use x(:), y(:))
-%L, H:               float   - size of the domain [0, L] * [0, H] (x, y)
-%matrix_A, matrix_B: matrix  - the matrices of coefs for the (m*n) base functions (shape = [n m])
+%x, y:               vector - the 2 component of a mesgrid flattened (use x(:), y(:))
+%L, H:               float  - size of the domain [0, L] * [0, H] (x, y)
+%matrix_A, matrix_B: matrix - the matrices of coefs for the (m*n) base functions (shape = [n m])
 function [spatial_A, spatial_B] = or_get_at_space(x, y, L, H, matrix_A, matrix_B, lb, vlb, vb, vbv),
 	global CANCEL
 
@@ -14,9 +14,9 @@ function [spatial_A, spatial_B] = or_get_at_space(x, y, L, H, matrix_A, matrix_B
 	spatial_A = [];
 	spatial_B = [];
 
-	phi_matrix = zeros([max_nm numel(x)]);
-	sinx = zeros([n_max numel(x)]);
-	siny = zeros([m_max numel(x)]);
+	phi_matrix = zeros([max_nm numel(x)]); %calculated values of base functions over the domain
+	sinx = zeros([n_max numel(x)]);				 %x part of base functions
+	siny = zeros([m_max numel(x)]);				 %y part of base functions
 
 	for m = 1:m_max,
 		siny(m, :) = sin(pi*m*y/H);
@@ -43,6 +43,7 @@ function [spatial_A, spatial_B] = or_get_at_space(x, y, L, H, matrix_A, matrix_B
 		endfor
 	endfor
 
+	%multiply base functions by their projection coefficients
  	spatial_A = matrix_A(:) .* phi_matrix;
  	spatial_B = matrix_B(:) .* phi_matrix;
 
@@ -55,7 +56,7 @@ endfunction
 %n_max, m_max:       int    - number of base functions to approximate (x * y)
 %L, H:               float  - size of the domain [0, L] * [0, H] (x, y)
 %matrix_A, matrix_B: matrix - the processed matrices of coefs for the (m*n) base functions (shape = [n*m numel(meshgrid)])
-%							  see "get_at_space"
+%							  							see "or_get_at_space"
 %t:                  float  - the time
 function matrix = or_get_at_time(shape, m_max, n_max, L, H, matrix_A, matrix_B, t),
   [M, N] = meshgrid(1:m_max, 1:n_max);
@@ -69,6 +70,14 @@ function or_closing(f),
   CLOSING = f;
 end
 
+%animate a solution over a period of time (can be cancelled)
+%
+%x, y:							 matrix - domain
+%n, m:							 scalar - dimension of base functions (x, y)
+%L, H: 							 scalar - dimension of domain
+%matrix_A, matrix_B: matrix - spatial part of the solution (u(r, t) ~ R(r)*T(t))
+%sd2, sd3:					 slider - start/end of the time domain
+%sd4, sd5:					 slider - base/exponant of time step (dt = sd4*10^-sd5)
 function or_anim(x, y, n, m, L, H, matrix_A, matrix_B, sd2, sd3, sd4, sd5),
 	sdata = round_100(get(sd2, 'value'));
 	edata = round_100(get(sd3, 'value'));
@@ -85,23 +94,28 @@ function or_anim(x, y, n, m, L, H, matrix_A, matrix_B, sd2, sd3, sd4, sd5),
 	f = figure();
 	set(f, 'deletefcn', @() or_closing(f))
 
+	%calculate solution and render it
 	sol = or_get_at_time(size(x), m, n, L, H, matrix_A, matrix_B, sdata);
 	sf = surf(x, y, sol);
 	ax = get(sf, 'parent');
 
+	%render stuff
 	lims = min_max(min(min(sol)), max(max(sol)));
 	caxis(lims);
 	axis([0, L, 0, H, -2, 2], 'equal')
 	colormap('jet')
 	shading('interp')
 
+	%main loop
 	dt = round(get(sd4, 'value')) * 10^(-round(get(sd5, 'value')));
 	t = sdata+dt;
 	while t <= edata && CLOSING != f,
+		%calculate solution for a new time
 		sol = or_get_at_time(size(x), m, n, L, H, matrix_A, matrix_B, t);
 		pause(1e-10)
 		if CLOSING == f, break endif
 
+		%change the color limits and plot/color data
 		lims = min_max(min(min(sol)), max(max(sol)));
 		set(ax, 'clim', lims)
 		set(sf, 'ZData', sol, 'CData', sol)
@@ -115,11 +129,19 @@ function or_anim(x, y, n, m, L, H, matrix_A, matrix_B, sd2, sd3, sd4, sd5),
 	CANCEL = true;
 end
 
+%plot solution for a given time
+%
+%x, y:							 matrix - domain
+%n, m:							 scalar - dimension of base functions (x, y)
+%L, H: 							 scalar - dimension of domain
+%matrix_A, matrix_B: matrix - spatial part of the solution (u(r, t) ~ R(r)*T(t))
+%sd1:                slider - time
 function or_unique(x, y, m, n, L, H, matrix_A, matrix_B, sd1),
 	figure
 	sol = or_get_at_time(size(x), m, n, L, H, matrix_A, matrix_B, round_100(get(sd1, 'value')));
 	surf(x, y, sol);
 
+	%render stuff
 	lims = min_max(min(min(sol)), max(max(sol)));
 	set(gca(), 'clim', lims)
 	axis([0, L, 0, H, -2, 2], 'equal')
@@ -129,6 +151,7 @@ function or_unique(x, y, m, n, L, H, matrix_A, matrix_B, sd1),
 	clear sol matrix_* x y sd1
 end
 
+%update text of dt
 function or_control(sd4, sd5, tx4),
   bdata = round(get(sd4, 'value'));
   edata = round(get(sd5, 'value'));
@@ -136,6 +159,13 @@ function or_control(sd4, sd5, tx4),
   set(tx4, 'string', sprintf('dt = %de-%d', bdata, edata))
 end
 
+%create controler for the solution
+%
+%x, y:							 matrix - domain
+%n, m:							 scalar - dimension of base functions (x, y)
+%L, H: 							 scalar - dimension of domain
+%matrix_A, matrix_B: matrix - matrix of coefficients of projection (f, g)
+%s:                  string - string representation of f and g
 function [h, plt] = or_create_handler(x, y, n, m, L, H, matrix_A, matrix_B, s),
 	screen_size = get(0, 'screensize');
   screen_center = screen_size(3:4)/2;

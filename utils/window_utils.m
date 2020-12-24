@@ -55,6 +55,7 @@ end
 #===========================[  Frames  ]===========================
 
 function main_menu(cbs='', evt=''),
+  global FLP
   global DLG
   global CANCEL
   global DRAWING
@@ -68,9 +69,9 @@ function main_menu(cbs='', evt=''),
   %plot previews
   gh1 = axes(DLG);
   gh2 = axes(DLG);
-  [x, y, z] = load_matrix("examples/laplace_1.example");
+  [x, y, z] = load_matrix([FLP 'examples/laplace_1.example']);
   surf(gh1, x, y, z); %laplace
-  [x, y, z] = load_matrix("examples/onde_rect_1.example");
+  [x, y, z] = load_matrix([FLP 'examples/onde_rect_1.example']);
   surf(gh2, x, y, z); %onde
   process_axes(gh1); set(gh1, "view", [60 30])
   process_axes(gh2); set(gh2, "zlim", [-1 1])
@@ -100,6 +101,7 @@ function main_menu(cbs='', evt=''),
 end
 
 function laplace_dom(cbs='', evt=''),
+  global FLP
   global DLG
   global CANCEL
   global DRAWING
@@ -113,9 +115,9 @@ function laplace_dom(cbs='', evt=''),
   %plot previews
   gh1 = axes(DLG);
   gh2 = axes(DLG);
-  [x, y, z] = load_matrix("examples/laplace_2.example");
+  [x, y, z] = load_matrix([FLP 'examples/laplace_2.example']);
   surf(gh1, x, y, z); %rect
-  [x, y, z] = load_matrix("examples/laplace_1.example");
+  [x, y, z] = load_matrix([FLP 'examples/laplace_1.example']);
   surf(gh2, x, y, z); %circ
   process_axes(gh1); set(gh1, "view", [-30 10])
   process_axes(gh2); set(gh2, "view", [60 30])
@@ -184,13 +186,6 @@ function laplace_rect(cbs='', evt=''),
 
   set(gcb, 'value', 0)
   set(spb, 'callback', @() lr_main(sd2, sd3, sd1, fed, slb, svb, gcb))
-
-  %clear tx1 tx2 tx3
-  %clear sd1 sd2 sd3
-  clear gtx gcb
-  %clear ftx fed
-  clear cpb spb
-  clear slb svb
 
   clear tx* sd* *tx gcb fed *pb slb svb
   refresh(DLG)
